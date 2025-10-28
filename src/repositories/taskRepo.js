@@ -10,3 +10,15 @@ export async function create(data) {
     data,
   });
 }
+
+// New repository function for getting a single task by ID
+export async function getTaskById(id) {
+  return await prisma.task.findUnique({
+    where: { id },
+    select: {
+      id: true,
+      title: true,
+      completed: true,
+    }
+  });
+}
