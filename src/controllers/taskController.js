@@ -13,10 +13,10 @@ export async function createTask(req, res, next) {
 
 // New controller function for getting a single task by ID
 export async function getTaskById(req, res, next) {
-  const { id } = parseInt(req.params.id);
+  const id = parseInt(req.params.id, 10);
 
   // Validate ID
-  if(isNaN(id)) {
+  if (Number.isNaN(id)) {
     return res.status(400).json({
       error: 'Validation failed',
       details: ['ID must be a number']
